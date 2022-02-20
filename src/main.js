@@ -24,7 +24,7 @@ router.afterEach((to, from) => {
   setTimeout(function () {
     store.dispatch('onLoading', false);
     console.log(store.state.isLoading);
-  }, 3000);
+  }, 500);
 });
 
 new Vue({

@@ -47,7 +47,7 @@ export default {
     }
   },
   created() {
-    // this.checkLogin();
+    this.checkLogin();
   }
 };
 </script>
