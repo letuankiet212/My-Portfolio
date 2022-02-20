@@ -16,7 +16,7 @@ export const APIAuth = {
         .then((res) => {
           const dataUser = res.user.reloadUserInfo;
           if (dataUser.email == 'letuankiet51@gmail.com') {
-            console.log('>>> Đăng Nhập Thành Công');
+            this.$router.push({ path: '/project' });
           } else {
             console.log('>>> Email không trùng khớp');
           }

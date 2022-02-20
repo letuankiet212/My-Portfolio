@@ -25,6 +25,7 @@
       </div>
       <detail-product></detail-product>
     </div>
+    <modal-add></modal-add>
   </default-layout>
 </template>
 
@@ -33,12 +34,14 @@ import defaultLayout from '../../layouts/defaultLayout.vue';
 import DetailProduct from './DetailProduct.vue';
 import Project from './project.vue';
 import SidebarLeft from './SidebarLeft.vue';
+import ModalAdd from './ModalAdd.vue';
 export default {
   components: {
     defaultLayout,
     Project,
     SidebarLeft,
-    DetailProduct
+    DetailProduct,
+    ModalAdd
   },
   data: () => ({
     listProject: [

@@ -58,4 +58,5 @@ export default {
 @import '../assets/scss/vuexy/css/pages/page-profile.css';
 @import '../assets/scss/vuexy/css/plugins/extensions/ext-component-tree.css';
 @import '../assets/scss/vuexy/css/pages/app-file-manager.css';
+@import '../assets/scss/vuexy/css/plugins/forms/form-file-uploader';
 </style>
