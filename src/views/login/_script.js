@@ -28,8 +28,14 @@ export const APIAuth = {
     signUp(email, password) {
       return createUserWithEmailAndPassword(authentication, email, password);
     },
-    getInfo() {
-      return onAuthStateChanged(authentication, (user) => console.log(user));
+    async getInfo() {
+      await onAuthStateChanged(authentication, (user) => {
+        if (user !== null) {
+          this.$router.push({ path: '/project' });
+        } else {
+          return false;
+        }
+      });
     },
     Logout() {
       return signOut(authentication);

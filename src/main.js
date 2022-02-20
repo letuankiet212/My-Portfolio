@@ -13,6 +13,20 @@ Vue.prototype.$$ = $$;
 
 Vue.config.productionTip = false;
 
+router.beforeEach((to, from, next) => {
+  store.dispatch('onLoading', true);
+  console.log(store.state.isLoading);
+  next();
+});
+
+// eslint-disable-next-line no-unused-vars
+router.afterEach((to, from) => {
+  setTimeout(function () {
+    store.dispatch('onLoading', false);
+    console.log(store.state.isLoading);
+  }, 3000);
+});
+
 new Vue({
   router,
   store,

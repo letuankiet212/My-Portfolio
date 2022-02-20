@@ -41,9 +41,14 @@ export default {
   methods: {
     SignInWithFirebase() {
       this.signInSocial();
+    },
+    async checkLogin() {
+      this.getInfo();
     }
   },
-  created() {}
+  created() {
+    // this.checkLogin();
+  }
 };
 </script>
 
