@@ -16,7 +16,35 @@
           <div class="modal-body">
             <label>Ảnh Sản Phẩm: </label>
             <div class="mb-1">
-              <input class="form-control" type="file" id="formFile" required />
+              <input class="form-control" type="file" id="formFile" @change="previewFiles" />
+            </div>
+            <div class="mb-1">
+              <input class="form-control" type="text" id="link_url" readonly value="" />
+            </div>
+
+            <div class="mb-1">
+              <div
+                id="select-files"
+                class="btn btn-outline-primary mb-1 waves-effect dz-clickable"
+                @click="UploadImg"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-file"
+                >
+                  <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                  <polyline points="13 2 13 9 20 9"></polyline>
+                </svg>
+                Click me to select files {{ progress }}%
+              </div>
             </div>
 
             <div class="input-group input-group-merge mb-1">
@@ -151,6 +179,7 @@ export default {
   mixins: [APIProduct],
   data: () => ({
     statusModal: true,
+    imgChoose: null,
     formModal: {
       link: 'he',
       desc: 'Kiệt đẹp trai số 1',
@@ -162,6 +191,14 @@ export default {
   methods: {
     handleSubmit() {
       this.addProject(this.formModal);
+    },
+    previewFiles(event) {
+      console.log('>>> Function iss Working', event.target.files);
+      this.imgChoose = event.target.files;
+    },
+    UploadImg() {
+      console.log(this.imgChoose);
+      this.uploadFiles(this.imgChoose);
     }
   }
 };

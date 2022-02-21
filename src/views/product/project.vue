@@ -2,7 +2,7 @@
   <div class="card file-manager-item folder" @click="handleClick(project.name)">
     <div class="card-img-top file-logo-wrapper p-0">
       <img
-        :src="require('../../assets/images/pexels-alexander-suhorucov-6457586.jpg')"
+        src="https://firebasestorage.googleapis.com/v0/b/vue-porfolio.appspot.com/o/files%2Fhelo.jpg?alt=media&token=a6a14f82-5fb0-4c4f-a6dc-2df108ddb7cd"
         alt=""
         width="100%"
         height="100%"
