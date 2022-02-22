@@ -2,7 +2,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { authentication } from '../../utils/connectFirebase';
 import { db } from '../../utils/connectFirebase';
 import { collection, getDocs, addDoc } from 'firebase/firestore/lite';
-import { ref, getStorage, getDownloadURL, uploadBytesResumable } from 'firebase/storage';
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 export const APIProduct = {
   data: () => ({
     statusLogin: false,
@@ -29,13 +29,19 @@ export const APIProduct = {
       } else return false;
     },
     uploadFiles(file) {
-      if (!file) return;
-
       const storage = getStorage();
+      const metadata = {
+        contentType: file[0].type
+      };
 
-      const storageRef = ref(storage, `/files/${file[0].name}`);
+      const storageRef = ref(storage, 'images/' + file[0].name);
+      const uploadTask = uploadBytesResumable(storageRef, file[0], metadata);
+      console.log(file);
+      // const storageRef = ref(storage, `/files/${file[0].name}`);
       // const uploadTask = uploadBytesResumable(storageRef, file);
-      const uploadTask = uploadBytesResumable(storageRef, file, 'data_url');
+      // const uploadTask = uploadBytesResumable(storageRef, file, {
+      //   contentType: 'image/jpeg'
+      // });
 
       uploadTask.on(
         'state_changed',
