@@ -44,14 +44,7 @@ export default {
     ModalAdd
   },
   data: () => ({
-    listProject: [
-      { name: 'Hello 1', tag: 'VueJS', image: '', time: '12:00:00' },
-      { name: 'Hello 2', tag: 'ReactJS', image: '', time: '12:00:00' },
-      { name: 'Hello 3', tag: 'VueJS', image: '', time: '12:00:00' },
-      { name: 'Hello 4', tag: 'VueJS', image: '', time: '12:00:00' },
-      { name: 'Hello 5', tag: 'VueJS', image: '', time: '12:00:00' },
-      { name: 'Hello 6', tag: 'VueJS', image: '', time: '12:00:00' }
-    ],
+    listProject: [],
     keyCategory: ''
   }),
 
@@ -90,8 +83,10 @@ export default {
   },
   mounted() {
     this.$eventBus.$on('UPDATE_CATEGORY', (res) => {
-      console.log(res);
       this.setCategory(res);
+    });
+    this.$eventBus.$on('GET_PROJECT', (res) => {
+      this.listProject = res;
     });
   }
 };

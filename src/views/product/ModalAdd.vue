@@ -21,7 +21,6 @@
             <div class="mb-1">
               <input class="form-control" type="text" id="link_url" readonly value="" />
             </div>
-
             <div class="mb-1">
               <div
                 id="select-files"
@@ -46,7 +45,6 @@
                 Click me to select files {{ progress }}%
               </div>
             </div>
-
             <div class="input-group input-group-merge mb-1">
               <span class="input-group-text" id="basic-addon-search2"
                 ><svg
@@ -70,6 +68,33 @@
                 class="form-control"
                 placeholder="Link demo..."
                 v-model="formModal.link"
+                required
+              />
+            </div>
+
+            <div class="input-group input-group-merge mb-1">
+              <span class="input-group-text" id="basic-addon-search2"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-external-link"
+                >
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line></svg
+              ></span>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Tên dự án"
+                v-model="formModal.name"
                 required
               />
             </div>
@@ -181,9 +206,10 @@ export default {
     statusModal: true,
     imgChoose: null,
     formModal: {
-      link: 'he',
-      desc: 'Kiệt đẹp trai số 1',
+      link: '',
+      desc: '',
       tag: [],
+      name: '',
       time_start: null,
       time_finish: null
     }

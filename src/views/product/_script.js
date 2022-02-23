@@ -1,12 +1,14 @@
 import { onAuthStateChanged } from 'firebase/auth';
 import { authentication } from '../../utils/connectFirebase';
 import { db } from '../../utils/connectFirebase';
+// eslint-disable-next-line no-unused-vars
 import { collection, getDocs, addDoc } from 'firebase/firestore/lite';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 export const APIProduct = {
   data: () => ({
     statusLogin: false,
-    progress: 0
+    progress: 0,
+    linkImg: ''
   }),
   methods: {
     async checkLogin() {
@@ -20,11 +22,15 @@ export const APIProduct = {
       const data = collection(db, 'projects');
       const dataSnapshot = await getDocs(data);
       const dataList = dataSnapshot.docs.map((doc) => doc.data());
-      console.log(dataList);
-      //   return dataList;
+      this.$eventBus.$emit('GET_PROJECT', dataList);
     },
     async addProject(data) {
       if (this.checkLogin) {
+        if (this.linkImg == '') {
+          alert('Bạn chưa nhập link hình ảnh');
+          return false;
+        }
+        data.link_img = this.linkImg;
         await addDoc(collection(db, 'projects'), data);
       } else return false;
     },
@@ -36,12 +42,6 @@ export const APIProduct = {
 
       const storageRef = ref(storage, 'images/' + file[0].name);
       const uploadTask = uploadBytesResumable(storageRef, file[0], metadata);
-      console.log(file);
-      // const storageRef = ref(storage, `/files/${file[0].name}`);
-      // const uploadTask = uploadBytesResumable(storageRef, file);
-      // const uploadTask = uploadBytesResumable(storageRef, file, {
-      //   contentType: 'image/jpeg'
-      // });
 
       uploadTask.on(
         'state_changed',
@@ -52,7 +52,7 @@ export const APIProduct = {
         },
         (err) => console.log(err),
         () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((url) => console.log(url));
+          getDownloadURL(uploadTask.snapshot.ref).then((url) => (this.linkImg = url));
         }
       );
     }
