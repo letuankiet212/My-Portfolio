@@ -11,7 +11,13 @@
                     <i class="jstree-icon jstree-ocl" role="presentation"></i
                     ><a class="jstree-anchor" href="#" tabindex="-1" role="treeitem" id="j1_1_anchor"
                       ><i
-                        class="jstree-icon jstree-themeicon far fa-folder font-medium-1 jstree-themeicon-custom"
+                        class="
+                          jstree-icon jstree-themeicon
+                          far
+                          fa-folder
+                          font-medium-1
+                          jstree-themeicon-custom
+                        "
                         role="presentation"
                       ></i
                       >My Drive</a

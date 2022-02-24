@@ -15,7 +15,6 @@
                     v-for="(project, index) in listProjectWithCategory"
                     :key="'project' + index"
                     :project="project"
-                    @show-detail="callPopup"
                   ></project>
                 </div>
               </div>
@@ -64,10 +63,6 @@ export default {
           this.keyCategory = '';
           break;
       }
-    },
-    callPopup(nameProject) {
-      console.log('>>> Function callPopup is working');
-      this.$eventBus.$emit('CALL_MODAL', nameProject);
     }
   },
   computed: {

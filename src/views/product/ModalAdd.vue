@@ -226,7 +226,8 @@ export default {
       console.log(this.imgChoose);
       this.uploadFiles(this.imgChoose);
     }
-  }
+  },
+  mounted() {}
 };
 </script>
 

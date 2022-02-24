@@ -56,7 +56,13 @@
           stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"
-          class="feather feather-arrow-down-circle font-medium-2 cursor-pointer d-sm-inline-block d-none me-50"
+          class="
+            feather feather-arrow-down-circle
+            font-medium-2
+            cursor-pointer
+            d-sm-inline-block d-none
+            me-50
+          "
         >
           <circle cx="12" cy="12" r="10"></circle>
           <polyline points="8 12 12 16 16 12"></polyline>

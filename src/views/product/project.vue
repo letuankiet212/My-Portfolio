@@ -1,5 +1,5 @@
 <template>
-  <div class="card file-manager-item folder" @click="handleClick(project.name)">
+  <div class="card file-manager-item folder" @click="handleClick(project)">
     <div class="card-img-top file-logo-wrapper p-0">
       <img :src="project.link_img" alt="" width="100%" height="100%" style="object-fit: cover" />
       <!-- <div class="d-flex align-items-center justify-content-center w-100"></div> -->
@@ -18,8 +18,8 @@ export default {
   name: 'project',
   props: ['project'],
   methods: {
-    handleClick(name) {
-      this.$emit('show-detail', name);
+    handleClick(data) {
+      this.$eventBus.$emit('DETAIL_POPUP', data);
     }
   }
 };
